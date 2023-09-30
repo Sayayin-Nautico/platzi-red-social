@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="myForm">
+        <input type="text" id="inputField">
+        <input type="submit" value="Send">
+    </form>
+    <div class="res"></div>
+</body>
+<script>
+    let form = document.querySelector('#myForm')
+    let input = document.querySelector('#inputField')
+    let res = document.querySelector('.res')
+    form.addEventListener("submit",(e)=>{
+        e.preventDefault()
+        let value = input.value
+        const valorEscapado = document.createTextNode(value).textContent
+        const regex = /<[^>]*>/g
+        const sqlAttack = (valorEscapado.match(regex)) ? 'No seas mala persona' : false
+        console.log(sqlAttack)
+    })
+</script>
+</html>
